@@ -1,0 +1,13 @@
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPart.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartByName.Form1.resources
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartByName.Properties.Resources.resources
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPart.csproj.GenerateResource.Cache
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartByName.exe
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartByName.pdb
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\bin\Debug\findPartByName.exe.config
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\bin\Debug\findPartByName.exe
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\bin\Debug\findPartByName.pdb
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\bin\Debug\Tekla.Common.Geometry.Topology.dll
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\bin\Debug\Tekla.Common.Geometry.Algorithms.dll
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\bin\Debug\Tekla.Common.Geometry.Topology.xml
+C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\bin\Debug\Tekla.Common.Geometry.Algorithms.xml
