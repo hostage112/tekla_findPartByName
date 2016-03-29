@@ -1,0 +1,515 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tekla.Common.Geometry.Topology</name>
+    </assembly>
+    <members>
+        <member name="T:Tekla.Common.Geometry.Topology.Contour2">
+            <summary>
+            2D contour containing an outer contour and a collection of holes.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.Contour2.#ctor(Tekla.Common.Geometry.Topology.Wire2,System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Topology.Wire2})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.Contour2"/> class.
+            </summary>
+            <param name="outerWire">The outer wire.</param>
+            <param name="holes">The holes.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.Contour2.ContinuousError">
+            <summary>
+            Gets the continuous error.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.Contour2.OuterWire">
+            <summary>
+            Gets the outer wire.
+            </summary>
+            <value>The outer wire.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.Contour2.Holes">
+            <summary>
+            Gets the holes of the contour.
+            </summary>
+            <value>The holes of the contour.</value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.EdgeArc2">
+            <summary>
+            2D edge based on arc.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.IEdge2">
+            <summary>
+            IEdge2 is the interface for 2D edges.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.IEdge2.ComputeAxisAlignedBoundingBox">
+            <summary>
+            Computes the axis aligned bounding box.
+            </summary>
+            <returns>The axis aligned bounding box.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.IEdge2.StartPoint">
+            <summary>
+            Gets the start point.
+            </summary>
+            <value>The start point.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.IEdge2.EndPoint">
+            <summary>
+            Gets the end point.
+            </summary>
+            <value>The end point.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.IEdge2.StartDirection">
+            <summary>
+            Gets the start direction.
+            </summary>
+            <value>The start direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.IEdge2.EndDirection">
+            <summary>
+            Gets the end direction.
+            </summary>
+            <value>The end direction.</value>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeArc2.#ctor(Tekla.Common.Geometry.Arc2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.EdgeArc2"/> class.
+            </summary>
+            <param name="arc">The arc in the edge.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeArc2.ComputeAxisAlignedBoundingBox">
+            <summary>
+            Computes the axis aligned bounding box.
+            </summary>
+            <returns>The axis aligned bounding box.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc2.Arc">
+            <summary>
+            Gets the arc of the edge.
+            </summary>
+            <value>The arc of the edge.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc2.StartPoint">
+            <summary>
+            Gets the start location.
+            </summary>
+            <value>The start location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc2.EndPoint">
+            <summary>
+            Gets the end location.
+            </summary>
+            <value>The end location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc2.StartDirection">
+            <summary>
+            Gets the start direction.
+            </summary>
+            <value>The start direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc2.EndDirection">
+            <summary>
+            Gets the end direction.
+            </summary>
+            <value>The end direction.</value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.EdgeArc3">
+            <summary>
+            3D edge based on arc.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.IEdge3">
+            <summary>
+            IEdge3 is the interface for 3D edges.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.IEdge3.ComputeAxisAlignedBoundingBox">
+            <summary>
+            Computes the axis aligned bounding box.
+            </summary>
+            <returns>The axis aligned bounding box.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.IEdge3.StartPoint">
+            <summary>
+            Gets the start point.
+            </summary>
+            <value>The start point.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.IEdge3.EndPoint">
+            <summary>
+            Gets the end point.
+            </summary>
+            <value>The end point.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.IEdge3.StartDirection">
+            <summary>
+            Gets the start direction.
+            </summary>
+            <value>The start direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.IEdge3.EndDirection">
+            <summary>
+            Gets the end direction.
+            </summary>
+            <value>The end direction.</value>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeArc3.#ctor(Tekla.Common.Geometry.Arc3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.EdgeArc3"/> class.
+            </summary>
+            <param name="arc">The arc.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeArc3.ComputeAxisAlignedBoundingBox">
+            <summary>
+            Computes the axis aligned bounding box.
+            </summary>
+            <returns>The axis aligned bounding box.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc3.Arc">
+            <summary>
+            Gets the arc of the edge.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc3.StartPoint">
+            <summary>
+            Gets the start location.
+            </summary>
+            <value>The start location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc3.EndPoint">
+            <summary>
+            Gets the end location.
+            </summary>
+            <value>The end location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc3.StartDirection">
+            <summary>
+            Gets the start direction.
+            </summary>
+            <value>The start direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeArc3.EndDirection">
+            <summary>
+            Gets the end direction.
+            </summary>
+            <value>The end direction.</value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.EdgeEllipticArc2">
+            <summary>
+            2D edge based on elliptic arc.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeEllipticArc2.#ctor(Tekla.Common.Geometry.EllipticArc2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.EdgeEllipticArc2"/> class.
+            </summary>
+            <param name="ellipticArc">The elliptic arc.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeEllipticArc2.ComputeAxisAlignedBoundingBox">
+            <summary>
+            Computes the axis aligned bounding box.
+            </summary>
+            <returns>The axis aligned bounding box.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeEllipticArc2.EllipticArc">
+            <summary>
+            Gets the elliptic arc.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeEllipticArc2.StartPoint">
+            <summary>
+            Gets the start location.
+            </summary>
+            <value>The start location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeEllipticArc2.EndPoint">
+            <summary>
+            Gets the end location.
+            </summary>
+            <value>The end location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeEllipticArc2.StartDirection">
+            <summary>
+            Gets the start direction.
+            </summary>
+            <value>The start direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeEllipticArc2.EndDirection">
+            <summary>
+            Gets the end direction.
+            </summary>
+            <value>The end direction.</value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.EdgeLineSegment2">
+            <summary>
+            2D edge based on line segment.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeLineSegment2.#ctor(Tekla.Common.Geometry.Vector2,Tekla.Common.Geometry.Vector2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.EdgeLineSegment2"/> class.
+            </summary>
+            <param name="startPoint">The start point.</param>
+            <param name="endPoint">The end point.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeLineSegment2.#ctor(Tekla.Common.Geometry.Segment2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.EdgeLineSegment2"/> class.
+            </summary>
+            <param name="segment">The segment.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeLineSegment2.ComputeAxisAlignedBoundingBox">
+            <summary>
+            Computes the axis aligned bounding box.
+            </summary>
+            <returns>The axis aligned bounding box.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment2.Segment">
+            <summary>
+            Gets the segment.
+            </summary>
+            <value>The segment.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment2.StartPoint">
+            <summary>
+            Gets the start point.
+            </summary>
+            <value>The start point.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment2.EndPoint">
+            <summary>
+            Gets the end point.
+            </summary>
+            <value>The end point.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment2.StartDirection">
+            <summary>
+            Gets the start direction.
+            </summary>
+            <value>The start direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment2.EndDirection">
+            <summary>
+            Gets the end direction.
+            </summary>
+            <value>The end direction.</value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.EdgeLineSegment3">
+            <summary>
+            3D edge based on line segment.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeLineSegment3.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.Vector3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.EdgeLineSegment3"/> class.
+            </summary>
+            <param name="startPoint">The start point.</param>
+            <param name="endPoint">The end point.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeLineSegment3.#ctor(Tekla.Common.Geometry.Segment3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.EdgeLineSegment3"/> class.
+            </summary>
+            <param name="segment">The segment.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgeLineSegment3.ComputeAxisAlignedBoundingBox">
+            <summary>
+            Computes the axis aligned bounding box.
+            </summary>
+            <returns>The axis aligned bounding box.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment3.Segment">
+            <summary>
+            Gets the segment.
+            </summary>
+            <value>The segment.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment3.StartPoint">
+            <summary>
+            Gets the start point.
+            </summary>
+            <value>The start point.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment3.EndPoint">
+            <summary>
+            Gets the end point.
+            </summary>
+            <value>The end point.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment3.StartDirection">
+            <summary>
+            Gets the start direction.
+            </summary>
+            <value>The start direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgeLineSegment3.EndDirection">
+            <summary>
+            Gets the end direction.
+            </summary>
+            <value>The end direction.</value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.EdgePolyLineSegment2">
+            <summary>
+            2D edge based on multiple, continuous line segments.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgePolyLineSegment2.#ctor(System.Collections.Generic.ICollection{Tekla.Common.Geometry.Vector2})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.EdgePolyLineSegment2"/> class.
+            </summary>
+            <param name="vertices">The vertices.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgePolyLineSegment2.ComputeAxisAlignedBoundingBox">
+            <summary>
+            Computes the axis aligned bounding box.
+            </summary>
+            <returns>The axis aligned bounding box.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment2.StartPoint">
+            <summary>
+            Gets the start location.
+            </summary>
+            <value>The start location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment2.EndPoint">
+            <summary>
+            Gets the end location.
+            </summary>
+            <value>The end location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment2.StartDirection">
+            <summary>
+            Gets the start direction.
+            </summary>
+            <value>The start direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment2.EndDirection">
+            <summary>
+            Gets the end direction.
+            </summary>
+            <value>The end direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment2.Vertices">
+            <summary>
+            Gets the enumerable collection of vertices.
+            </summary>
+            <value>The vertexes.</value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.EdgePolyLineSegment3">
+            <summary>
+            3D edge based on multiple, continuous line segments.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgePolyLineSegment3.#ctor(System.Collections.Generic.ICollection{Tekla.Common.Geometry.Vector3})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.EdgePolyLineSegment3"/> class.
+            </summary>
+            <param name="vertices">The vertices.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.EdgePolyLineSegment3.ComputeAxisAlignedBoundingBox">
+            <summary>
+            Computes the axis aligned bounding box.
+            </summary>
+            <returns>The axis aligned bounding box.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment3.StartPoint">
+            <summary>
+            Gets the start location.
+            </summary>
+            <value>The start location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment3.EndPoint">
+            <summary>
+            Gets the end location.
+            </summary>
+            <value>The end location.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment3.StartDirection">
+            <summary>
+            Gets the start direction.
+            </summary>
+            <value>The start direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment3.EndDirection">
+            <summary>
+            Gets the end direction.
+            </summary>
+            <value>The end direction.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.EdgePolyLineSegment3.Vertices">
+            <summary>
+            Gets the enumerable collection of vertices.
+            </summary>
+            <value>The vertexes.</value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.NamespaceDoc">
+            <summary>
+            <c>Tekla.Common.Geometry.Topology</c> contains the definitions and functionality for the geometry topology used in Tekla products.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.Wire2">
+            <summary>
+            Contains an ordered collection of 2D edges. It also provides methods 
+            for calculating the minimum distance between edges, is it self-intersecting and is it closed.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.Wire2.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Topology.IEdge2},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.Wire2"/> class.
+            </summary>
+            <param name="edges">The edges in the wire.</param>
+            <param name="closed">if set to <c>true</c> is closed, open otherwise</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.Wire2.Edges">
+            <summary>
+            Gets the edges.
+            </summary>
+            <value>The edges.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.Wire2.Closed">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Tekla.Common.Geometry.Topology.Wire2"/> is closed.
+            </summary>
+            <value><c>true</c> if closed; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.Wire2.ContinuousError">
+            <summary>
+            Gets the maximum continuous error (distance between edges).
+            </summary>
+            <value>The continuous error.</value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Topology.Wire3">
+            <summary>
+            Contains an ordered collection of 3D edges. It also provides methods 
+            for calculating the minimum distance between edges, is it self-intersecting and is it closed.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Topology.Wire3.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Topology.IEdge3},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Topology.Wire3"/> class.
+            </summary>
+            <param name="edges">The edges in the wire.</param>
+            <param name="closed">if set to <c>true</c> is closed, open otherwise</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.Wire3.Edges">
+            <summary>
+            Gets the edges.
+            </summary>
+            <value>The edges.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.Wire3.Closed">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Tekla.Common.Geometry.Topology.Wire3"/> is closed.
+            </summary>
+            <value><c>true</c> if closed; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Topology.Wire3.ContinuousError">
+            <summary>
+            Gets the maximum continuous error (distance between edges).
+            </summary>
+            <value>The continuous error.</value>
+        </member>
+    </members>
+</doc>

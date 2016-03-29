@@ -1,0 +1,2814 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tekla.Common.Geometry.Shapes</name>
+    </assembly>
+    <members>
+        <member name="T:Tekla.Common.Geometry.MathBase">
+            <summary>
+            Internal math base, no need to be COM visible.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.FacetedBRep">
+            <summary>
+            Faceted B-Rep node
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.FacetedBRep.vertices">
+            <summary>
+            The vertices.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.#ctor(Tekla.Common.Geometry.Vector3[],System.Int32[][],System.Collections.Generic.IDictionary{System.Int32,System.Int32[][]})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.FacetedBRep"/> class.
+            </summary>
+            <param name="vertices">The vertices.</param>
+            <param name="outerWires">The outer wires.</param>
+            <param name="innerWires">The inner wires.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.GetOuterFace(System.Int32)">
+            <summary>
+            Gets the outer face.
+            </summary>
+            <param name="faceIndex">Index of the face.</param>
+            <returns>The array of vertex indexes for the outer face.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.GetInnerFaceCount(System.Int32)">
+            <summary>
+            Gets the inner face count.
+            </summary>
+            <param name="faceIndex">Index of the face.</param>
+            <returns>The count of inner faces for the outer face.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.GetInnerFace(System.Int32)">
+            <summary>
+            Gets the inner face.
+            </summary>
+            <param name="faceIndex">Index of the face.</param>
+            <returns>The array of vertex indexes for the inner face.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.CheckForTwoManifold">
+            <summary>
+            Checks for 2-manifold. 
+            </summary>
+            <returns>true, if the faceted brep is 2-manifold.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.MakeKey(System.UInt16,System.UInt16)">
+            <summary>
+            Makes the key.
+            </summary>
+            <param name="v0">The v0.</param>
+            <param name="v1">The v1.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRep.Vertices">
+            <summary>
+            Gets the vertices.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRep.Faces">
+            <summary>
+            Gets the faces.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRep.OuterWires">
+            <summary>
+            Gets the outer wires.
+            </summary>
+            <value>
+            The outer wires.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRep.InnerWires">
+            <summary>
+            Gets the inner wires.
+            </summary>
+            <value>
+            The inner wires.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection">
+            <summary>
+            Collection of faces.
+            Use FacetedBRepBuilder to create a new one.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.faces">
+            <summary>
+            The list of faces in the B-Rep.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.#ctor(Tekla.Common.Geometry.Shapes.FacetedBRep)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection"/> class.
+            </summary>
+            <param name="facetedBrep">The faceted B-Rep.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>The enumerator for faces.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.Add(Tekla.Common.Geometry.Shapes.FacetedBRepFace)">
+            <summary>
+            Adds the specified item. Not implemented, this is read only.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.Clear">
+            <summary>
+            Clears this instance. Not implemented, this is read only.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.Contains(Tekla.Common.Geometry.Shapes.FacetedBRepFace)">
+            <summary>
+            Determines whether FacetedBRep contains he specified face.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>
+            <c>true</c> if contains the face; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.CopyTo(Tekla.Common.Geometry.Shapes.FacetedBRepFace[],System.Int32)">
+            <summary>
+            Copies to array.
+            </summary>
+            <param name="array">The array.</param>
+            <param name="arrayIndex">Index of the array.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.Remove(Tekla.Common.Geometry.Shapes.FacetedBRepFace)">
+            <summary>
+            Removes the specified item, not implemented. This is read only.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>exception.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.Count">
+            <summary>
+            Gets the count.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRep.FacetedBrepFaceCollection.IsReadOnly">
+            <summary>
+            Gets a value indicating whether this instance is read only. Always is.
+            </summary>
+            <value>
+            <c>true</c> if this instance is read only; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder">
+            <summary>
+            A builder class to create faceted B-Reps
+            The created faceted B-Rep is immutable.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.outerWires">
+            <summary>
+            The list of outer wires in the faceted B-Rep.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder"/> class.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.AddOuterWire(System.Collections.Generic.ICollection{Tekla.Common.Geometry.Vector3})">
+            <summary>
+            Adds an outer wire. 
+            </summary>
+            <param name="outerWire">The outer wire.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.AddInnerWire(System.Collections.Generic.ICollection{Tekla.Common.Geometry.Vector3})">
+            <summary>
+            Adds the inner wire.
+            </summary>
+            <param name="innerWire">The inner wire.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.Build(System.Double)">
+            <summary>
+            Builds a FacetedBrep instance of the wires added to this FacetedBrepBuilder.
+            </summary>
+            <param name="epsilon">The epsilon used to reduce the vertices.</param>
+            <returns>
+            Faceted B-Rep instance.
+            </returns>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.FacetedBrepOuterWire">
+            <summary>
+            class presenting the outer wire.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.FacetedBrepOuterWire.vertices">
+            <summary>
+            the vertices in the outer wire.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.FacetedBrepOuterWire.innerWires">
+            <summary>
+            The list of inner wires (holes).
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.FacetedBrepOuterWire.#ctor(System.Collections.Generic.ICollection{Tekla.Common.Geometry.Vector3})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.FacetedBrepOuterWire"/> class.
+            </summary>
+            <param name="vertices">The vertices.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.FacetedBrepOuterWire.AddInnerWire(System.Collections.Generic.ICollection{Tekla.Common.Geometry.Vector3})">
+            <summary>
+            Adds a new inner wire to the outer wire..
+            </summary>
+            <param name="innerWireVertices">The vertices.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.FacetedBrepOuterWire.Vertices">
+            <summary>
+            Gets the vertices.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepBuilder.FacetedBrepOuterWire.InnerWires">
+            <summary>
+            Gets the outer wires. TODO; how to change this to read-only...
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.FacetedBRepFace">
+            <summary>
+            The Explorer class for the <see cref="P:Tekla.Common.Geometry.Shapes.FacetedBRepFace.FacetedBrep">FacetedBrep</see>
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFace.#ctor(Tekla.Common.Geometry.Shapes.FacetedBRep,System.Collections.Generic.IList{System.Int32},System.Collections.Generic.IList{Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.FacetedBRepFace"/> struct.
+            </summary>
+            <param name="facetedBrep">The faceted brep.</param>
+            <param name="verticeIndexes">The vertice indexes.</param>
+            <param name="holes">The holes.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFace.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>the enumerator.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFace.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFace.FacetedBrep">
+            <summary>
+            Gets the faceted B-Rep.
+            </summary>
+            <value>
+            The faceted B-Rep.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFace.VerticeIndexes">
+            <summary>
+            Gets the vertex index enumerable.
+            </summary>
+            <value>
+            The vertex index enumerable.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFace.HasHoles">
+            <summary>
+            Gets a value indicating whether this instance has holes.
+            </summary>
+            <value>
+              <c>true</c> if this instance has holes; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFace.Vertices">
+            <summary>
+            Gets the vertices enumerable.
+            </summary>
+            <value>
+            The vertex enumerable.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFace.Holes">
+            <summary>
+            Gets the holes.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole">
+            <summary>
+            The class for a hole inside faceted BRep face.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.verticeIndexes">
+            <summary>
+            internal enumerable for the vertices.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.#ctor(Tekla.Common.Geometry.Shapes.FacetedBRep,System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole"/> struct.
+            </summary>
+            <param name="facetedBrep">The faceted brep.</param>
+            <param name="verticeIndexes">The vertice indexes.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>the enumerator</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.Add(System.Int32)">
+            <summary>
+            Adds the specified item. Not Implemented, this is read only.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.Clear">
+            <summary>
+            Clears this instance. Not Implemented, this is read only.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.Contains(System.Int32)">
+            <summary>
+            Determines whether the FacetedBRepFaceHole contains the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>
+              <c>true</c> if contains the specified item; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.CopyTo(System.Int32[],System.Int32)">
+            <summary>
+            Copies to other array.
+            </summary>
+            <param name="array">The array.</param>
+            <param name="arrayIndex">Index of the array.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.Remove(System.Int32)">
+            <summary>
+            Removes the specified item. Not implemented, this is read only.
+            </summary>
+            <param name="item">The item.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.FacetedBrep">
+            <summary>
+            Gets the faceted B-Rep.
+            </summary>
+            <value>
+            The faceted B-Rep.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.Vertices">
+            <summary>
+            Gets the vertice indexes.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.VerticeIndexes">
+            <summary>
+            Gets the vertice indexes.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.Count">
+            <summary>
+            Gets the count.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.FacetedBRepFaceHole.IsReadOnly">
+            <summary>
+            Gets a value indicating whether this instance is read only. Alway sis.
+            </summary>
+            <value>
+            <c>true</c> if this instance is read only; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2">
+            <summary>
+            Bezier curve
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.ICurve2">
+            <summary>
+            Interface for 2d curves.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ICurve2.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>The evaluated value.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Vector2},System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2"/> class.
+            </summary>
+            <param name="poles">The poles.</param>
+            <param name="weights">The weights.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2.GetHashCode">
+            <summary>
+            Returns the hash code for circle
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2.Poles">
+            <summary>
+            Gets the poles.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2.Weights">
+            <summary>
+            Gets the weights.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve2.Degree">
+            <summary>
+            Gets the degree.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3">
+            <summary>
+            Bezier curve
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.ICurve3">
+            <summary>
+            Interface for 3d curves.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ICurve3.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>The evaluated value.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Vector3},System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3"/> class.
+            </summary>
+            <param name="poles">The poles.</param>
+            <param name="weights">The weights.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3.GetHashCode">
+            <summary>
+            Returns the hash code for circle
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3.Poles">
+            <summary>
+            Gets the poles.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3.Weights">
+            <summary>
+            Gets the weights.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BezierCurve3.Degree">
+            <summary>
+            Gets the degree.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.Orientation">
+            <summary>
+            Orientation for edge, wire and face
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.OpenCascade.Orientation.Forward">
+            <summary>
+            Forward orientation
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.OpenCascade.Orientation.Reversed">
+            <summary>
+            Reversed orientation
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.OpenCascade.Orientation.Internal">
+            <summary>
+            Internal orientation
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Shapes.OpenCascade.Orientation.External">
+            <summary>
+            External orientation
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BRep">
+            <summary>
+            Topological boundary representation for geometric object
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.Solid})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BRep"/> class.
+            </summary>
+            <param name="solids">The solids.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedSolid},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedShell},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedFace},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.ISurface},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedWire},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedOrientedEdge},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedEdge},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.ICurve3},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.ICurve2},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Vector3})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BRep"/> class.
+            </summary>
+            <param name="indexedSolids">The indexed solids.</param>
+            <param name="indexedShells">The indexed shells.</param>
+            <param name="indexedFaces">The indexed faces.</param>
+            <param name="surfaces">The surfaces.</param>
+            <param name="indexedWires">The indexed wires.</param>
+            <param name="indexedOrientedEdges">The indexed oriented edges.</param>
+            <param name="indexedEdges">The indexed edges.</param>
+            <param name="curves">The curves.</param>
+            <param name="curvesOnSurface">The curves on surface.</param>
+            <param name="vertices">The vertices.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.GetFace(System.Int32)">
+            <summary>
+            Gets the face.
+            </summary>
+            <param name="faceIndex">Index of the face.</param>
+            <returns>The face corresponding to index.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.GetEdge(System.Int32)">
+            <summary>
+            Gets the edge.
+            </summary>
+            <param name="orientedEdgeIndex">Index of the oriented edge.</param>
+            <returns>The edge corresponding to index.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.BRep)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.Solids">
+            <summary>
+            Gets the solids.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.Faces">
+            <summary>
+            Gets the faces.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.Edges">
+            <summary>
+            Gets the edges.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.BoundingBox">
+            <summary>
+            Gets the bounding box.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedSolids">
+            <summary>
+            Gets the indexed solids.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedShells">
+            <summary>
+            Gets the indexed shells.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedFaces">
+            <summary>
+            Gets the indexed faces.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.Surfaces">
+            <summary>
+            Gets the surfaces.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedWires">
+            <summary>
+            Gets the indexed wires.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedOrientedEdges">
+            <summary>
+            Gets the oriented edges.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedEdges">
+            <summary>
+            Gets the indexed edges.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.Curves">
+            <summary>
+            Gets the curves.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.CurvesOnSurface">
+            <summary>
+            Gets the curves on surface.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.Vertices">
+            <summary>
+            Gets the vertices.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedSolid">
+            <summary>
+            Struct for indexed solid
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedShell">
+            <summary>
+            Struct for indexed shell
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedFace">
+            <summary>
+            Struct for indexed face
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedWire">
+            <summary>
+            Struct for indexed wire
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedOrientedEdge">
+            <summary>
+            Struct for indexed oriented edge
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BRep.IndexedEdge">
+            <summary>
+            Struct for indexed edge
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2">
+            <summary>
+            B-spline curve
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Vector2},System.Collections.Generic.IEnumerable{System.Double},System.Collections.Generic.IEnumerable{System.Int32},System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2"/> class (non-rational).
+            </summary>
+            <param name="poles">The poles.</param>
+            <param name="knots">The knots.</param>
+            <param name="multiplicities">The multiplicities.</param>
+            <param name="degree">The degree.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Vector2},System.Collections.Generic.IEnumerable{System.Double},System.Collections.Generic.IEnumerable{System.Double},System.Collections.Generic.IEnumerable{System.Int32},System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2"/> class (rational).
+            </summary>
+            <param name="poles">The poles.</param>
+            <param name="weights">The weights.</param>
+            <param name="knots">The knots.</param>
+            <param name="multiplicities">The multiplicities.</param>
+            <param name="degree">The degree.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.GetHashCode">
+            <summary>
+            Returns the hash code for circle
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.Poles">
+            <summary>
+            Gets the poles.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.Weights">
+            <summary>
+            Gets the weights.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.Knots">
+            <summary>
+            Gets the knots.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.Multiplicities">
+            <summary>
+            Gets the multiplicities.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.Degree">
+            <summary>
+            Gets the degree.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve2.Rational">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3"/> is rational.
+            </summary>
+            <value>
+              <c>true</c> if rational; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3">
+            <summary>
+            B-spline curve
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Vector3},System.Collections.Generic.IEnumerable{System.Double},System.Collections.Generic.IEnumerable{System.Int32},System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3"/> class (non-rational).
+            </summary>
+            <param name="poles">The poles.</param>
+            <param name="knots">The knots.</param>
+            <param name="multiplicities">The multiplicities.</param>
+            <param name="degree">The degree.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Vector3},System.Collections.Generic.IEnumerable{System.Double},System.Collections.Generic.IEnumerable{System.Double},System.Collections.Generic.IEnumerable{System.Int32},System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3"/> class (rational).
+            </summary>
+            <param name="poles">The poles.</param>
+            <param name="weights">The weights.</param>
+            <param name="knots">The knots.</param>
+            <param name="multiplicities">The multiplicities.</param>
+            <param name="degree">The degree.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.GetHashCode">
+            <summary>
+            Returns the hash code for circle
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.Poles">
+            <summary>
+            Gets the poles.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.Weights">
+            <summary>
+            Gets the weights.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.Knots">
+            <summary>
+            Gets the knots.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.Multiplicities">
+            <summary>
+            Gets the multiplicities.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.Degree">
+            <summary>
+            Gets the degree.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3.Rational">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.BSplineCurve3"/> is rational.
+            </summary>
+            <value>
+              <c>true</c> if rational; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2">
+            <summary>
+            Circle curve.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.#ctor(Tekla.Common.Geometry.Vector2,Tekla.Common.Geometry.UnitVector2,Tekla.Common.Geometry.UnitVector2,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="unitX">The unit X.</param>
+            <param name="unitY">The unit Y.</param>
+            <param name="radius">The radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.#ctor(Tekla.Common.Geometry.Circle2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2"/> class from Circle2 struct.
+            </summary>
+            <param name="circle">The circle.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two circles
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the circles are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2)">
+            <summary>
+            Tests for the exact equality of two circles
+            </summary>
+            <param name="other">The other circle</param>
+            <returns>TRUE if the circles are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.GetHashCode">
+            <summary>
+            Returns the hash code for circle
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.Circle">
+            <summary>
+            Gets the CircleCurve2 as Circle2.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.UnitX">
+            <summary>
+            Gets the unit X.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.UnitY">
+            <summary>
+            Gets the unit Y.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve2.Radius">
+            <summary>
+            Gets the radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3">
+            <summary>
+            Circle curve.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.UnitVector3,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3"/> class.
+            Circle is always right-handed.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="unitX">The unit X.</param>
+            <param name="unitY">The unit Y.</param>
+            <param name="radius">The radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.#ctor(Tekla.Common.Geometry.Circle3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3"/> class from Circle3 struct.
+            </summary>
+            <param name="circle">The circle.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two circles
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the circles are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3)">
+            <summary>
+            Tests for the exact equality of two circles
+            </summary>
+            <param name="other">The other circle</param>
+            <returns>TRUE if the circles are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.GetHashCode">
+            <summary>
+            Returns the hash code for circle
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.Circle">
+            <summary>
+            Gets the CircleCurve3 as Circle3.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.UnitX">
+            <summary>
+            Gets the unit X.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.UnitY">
+            <summary>
+            Gets the unit Y.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.Normal">
+            <summary>
+            Gets the normal of the curve plane.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CircleCurve3.Radius">
+            <summary>
+            Gets the radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface">
+            <summary>
+            Cone surface.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.ISurface">
+            <summary>
+            Interface for 3d surfaces.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.UnitVector3,System.Boolean,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="unitX">The unit X.</param>
+            <param name="unitY">The unit Y.</param>
+            <param name="direct">if set to <c>true</c>, surface's local coordinate system is direct i.e. right-handed, else left-handed.</param>
+            <param name="angle">The angle.</param>
+            <param name="radius">The radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.UnitX">
+            <summary>
+            Gets the unit X.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.UnitY">
+            <summary>
+            Gets the unit Y.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.Direction">
+            <summary>
+            Gets the direction.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.Direct">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface"/> is direct i.e. right-handed.
+            </summary>
+            <value>
+              <c>true</c> if right-handed; otherwise left-handed, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.Angle">
+            <summary>
+            Gets the angle.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ConeSurface.Radius">
+            <summary>
+            Gets the radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution">
+            <summary>
+            Surface of revolution.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.Shapes.OpenCascade.ICurve3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="direction">The direction.</param>
+            <param name="meridian">The meridian.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution.Direction">
+            <summary>
+            Gets the direction.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.SurfaceOfRevolution.Meridian">
+            <summary>
+            Gets the meridian.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface">
+            <summary>
+            Cylinder surface
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.UnitVector3,System.Boolean,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="unitX">The unit X.</param>
+            <param name="unitY">The unit Y.</param>
+            <param name="direct">if set to <c>true</c>, surface's local coordinate system is direct i.e. right-handed, else left-handed.</param>
+            <param name="radius">The radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.UnitX">
+            <summary>
+            Gets the unit X.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.UnitY">
+            <summary>
+            Gets the unit Y.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.Direction">
+            <summary>
+            Gets the direction.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.Direct">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface"/> is direct i.e. right-handed.
+            </summary>
+            <value>
+              <c>true</c> if right-handed; otherwise left-handed, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.CylinderSurface.Radius">
+            <summary>
+            Gets the radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3">
+            <summary>
+            Topological representation for edge geometry
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.#ctor(Tekla.Common.Geometry.Shapes.OpenCascade.Orientation,Tekla.Common.Geometry.Shapes.OpenCascade.ICurve3,Tekla.Common.Geometry.Shapes.OpenCascade.ICurve2,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3"/> class.
+            </summary>
+            <param name="orientation">The orientation.</param>
+            <param name="curve">The curve.</param>
+            <param name="curveOnSurface">The curveOnSurface. Can be null if this edge is connected to plane surface.</param>
+            <param name="startParameter">The start parameter.</param>
+            <param name="endParameter">The end parameter.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.#ctor(Tekla.Common.Geometry.Shapes.OpenCascade.Orientation,Tekla.Common.Geometry.Shapes.OpenCascade.ICurve3,Tekla.Common.Geometry.Shapes.OpenCascade.ICurve2,System.Double,System.Double,Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.Vector3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3"/> class.
+            </summary>
+            <param name="orientation">The orientation.</param>
+            <param name="curve">The curve.</param>
+            <param name="curveOnSurface">The curveOnSurface. Can be null if this edge is connected to plane surface.</param>
+            <param name="startParameter">The start parameter.</param>
+            <param name="endParameter">The end parameter.</param>
+            <param name="startVertex">The start vertex.</param>
+            <param name="endVertex">The end vertex.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.#ctor(Tekla.Common.Geometry.Segment3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3"/> class from Segment3.
+            </summary>
+            <param name="segment">The segment.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.#ctor(Tekla.Common.Geometry.Ray3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3"/> class from Ray3.
+            </summary>
+            <param name="ray">The ray.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.#ctor(Tekla.Common.Geometry.Circle3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3"/> class from Circle3.
+            </summary>
+            <param name="circle">The circle.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.#ctor(Tekla.Common.Geometry.Arc3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3"/> class from Arc3.
+            </summary>
+            <param name="arc">The arc.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.Edge3)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.Segment">
+            <summary>
+            Gets the Edge3 as Segment3.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.SegmentOnSurface">
+            <summary>
+            Gets the edge's surface curve as Segment2.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.Ray">
+            <summary>
+            Gets the Edge3 as Ray3.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.Circle">
+            <summary>
+            Gets the Edge3 as Circle3.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.CircleOnSurface">
+            <summary>
+            Gets the edge's surface curve as Circle2.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.Arc">
+            <summary>
+            Gets the Edge3 as Arc3.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.ArcOnSurface">
+            <summary>
+            Gets the edge's surface curve as Arc2.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.BoundingBox">
+            <summary>
+            Gets the bounding box.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.Orientation">
+            <summary>
+            Gets the orientation.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.Curve">
+            <summary>
+            Gets the curve.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.CurveOnSurface">
+            <summary>
+            Gets the curve on surface.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.StartParameter">
+            <summary>
+            Gets the start parameter.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.EndParameter">
+            <summary>
+            Gets the end parameter.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.StartVertex">
+            <summary>
+            Gets the start vertex.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.EndVertex">
+            <summary>
+            Gets the end vertex.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.StartVertexOnSurface">
+            <summary>
+            Gets the start vertex of the curve on surface.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Edge3.EndVertexOnSurface">
+            <summary>
+            Gets the end vertex of the curve on surface.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2">
+            <summary>
+            Ellipse curve
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.#ctor(Tekla.Common.Geometry.Vector2,Tekla.Common.Geometry.UnitVector2,Tekla.Common.Geometry.UnitVector2,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="majorUnit">The major unit.</param>
+            <param name="minorUnit">The minor unit.</param>
+            <param name="majorRadius">The major radius.</param>
+            <param name="minorRadius">The minor radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.MajorUnit">
+            <summary>
+            Gets the major unit.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.MinorUnit">
+            <summary>
+            Gets the minor unit.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.MajorRadius">
+            <summary>
+            Gets the major radius.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve2.MinorRadius">
+            <summary>
+            Gets the minor radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3">
+            <summary>
+            Ellipse curve
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.UnitVector3,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="majorUnit">The major unit.</param>
+            <param name="minorUnit">The minor unit.</param>
+            <param name="majorRadius">The major radius.</param>
+            <param name="minorRadius">The minor radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.MajorUnit">
+            <summary>
+            Gets the major unit.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.MinorUnit">
+            <summary>
+            Gets the minor unit.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.Normal">
+            <summary>
+            Gets the normal of the curve plane.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.MajorRadius">
+            <summary>
+            Gets the major radius.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.EllipseCurve3.MinorRadius">
+            <summary>
+            Gets the minor radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.Face">
+            <summary>
+            Topological representation for face geometry
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Face.#ctor(Tekla.Common.Geometry.Shapes.OpenCascade.Orientation,Tekla.Common.Geometry.Shapes.OpenCascade.ISurface,System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.Wire3})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Face"/> class.
+            </summary>
+            <param name="orientation">The orientation.</param>
+            <param name="surface">The surface.</param>
+            <param name="wires">The wires.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Face.#ctor(Tekla.Common.Geometry.Plane3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Face"/> class as infinite plane.
+            </summary>
+            <param name="plane">The plane.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Face.#ctor(Tekla.Common.Geometry.Cylinder3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Face"/> class as infinite cylinder.
+            </summary>
+            <param name="cylinder">The cylinder.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Face.#ctor(Tekla.Common.Geometry.Torus3,Tekla.Common.Geometry.AffineTransform3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Face"/> class as a torus.
+            </summary>
+            <param name="torus">The torus.</param>
+            <param name="location">The location.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Face.TryGetTorus(Tekla.Common.Geometry.AffineTransform3@)">
+            <summary>
+            Tries to get the Face as a torus.
+            </summary>
+            <param name="location">The torus location.</param>
+            <returns>The torus, if face's surface is torus or surface of revolution with circle meridian.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Face.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Face.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.Face)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Face.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Face.Plane">
+            <summary>
+            Gets the Face as infinite plane.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Face.Cylinder">
+            <summary>
+            Gets the Face as infinite cylinder.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Face.BoundingBox">
+            <summary>
+            Gets the bounding box.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Face.Orientation">
+            <summary>
+            Gets the orientation.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Face.Surface">
+            <summary>
+            Gets the surface.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Face.Wires">
+            <summary>
+            Gets the wires.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2">
+            <summary>
+            Hyperbola curve.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.#ctor(Tekla.Common.Geometry.Vector2,Tekla.Common.Geometry.UnitVector2,Tekla.Common.Geometry.UnitVector2,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="majorUnit">The major unit.</param>
+            <param name="minorUnit">The minor unit.</param>
+            <param name="majorRadius">The major radius.</param>
+            <param name="minorRadius">The minor radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.MajorUnit">
+            <summary>
+            Gets the major unit.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.MinorUnit">
+            <summary>
+            Gets the minor unit.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.MajorRadius">
+            <summary>
+            Gets the major radius.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve2.MinorRadius">
+            <summary>
+            Gets the minor radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3">
+            <summary>
+            Hyperbola curve.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.UnitVector3,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="majorUnit">The major unit.</param>
+            <param name="minorUnit">The minor unit.</param>
+            <param name="majorRadius">The major radius.</param>
+            <param name="minorRadius">The minor radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.MajorUnit">
+            <summary>
+            Gets the major unit.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.MinorUnit">
+            <summary>
+            Gets the minor unit.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.Normal">
+            <summary>
+            Gets the normal of the curve plane.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.MajorRadius">
+            <summary>
+            Gets the major radius.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.HyperbolaCurve3.MinorRadius">
+            <summary>
+            Gets the minor radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2">
+            <summary>
+            Line curve.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2.#ctor(Tekla.Common.Geometry.Vector2,Tekla.Common.Geometry.UnitVector2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="direction">The direction.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2.#ctor(Tekla.Common.Geometry.Line2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2"/> class from Line2 struct.
+            </summary>
+            <param name="line">The line.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2.Equals(System.Object)">
+            <summary>
+            Tests the exact equality of two lines
+            </summary>
+            <param name="obj">The object to test with this object</param>
+            <returns>Returns TRUE of the two lines are exactly equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2)">
+            <summary>
+            Tests the exact equality of two lines
+            </summary>
+            <param name="other">A 2D line to test with this line</param>
+            <returns>Returns TRUE if the two lines are exactly equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2.GetHashCode">
+            <summary>
+            Returns a hash code for line
+            </summary>
+            <returns>The hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2.Line">
+            <summary>
+            Gets the LineCurve2 as Line2.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve2.Direction">
+            <summary>
+            Gets the direction.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3">
+            <summary>
+            Line curve.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="direction">The direction.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3.#ctor(Tekla.Common.Geometry.Line3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3"/> class from Line3 struct.
+            </summary>
+            <param name="line">The line.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3.Equals(System.Object)">
+            <summary>
+            Tests the exact equality of two lines
+            </summary>
+            <param name="obj">The object to test with this object</param>
+            <returns>Returns TRUE of the two lines are exactly equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3)">
+            <summary>
+            Tests the exact equality of two lines
+            </summary>
+            <param name="other">A 3D line to test with this line</param>
+            <returns>Returns TRUE if the two lines are exactly equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3.GetHashCode">
+            <summary>
+            Returns a hash code for line
+            </summary>
+            <returns>The hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3.Line">
+            <summary>
+            Gets the LineCurve3 as Line3.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.LineCurve3.Direction">
+            <summary>
+            Gets the direction.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2">
+            <summary>
+            Parabola curve.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2.#ctor(Tekla.Common.Geometry.Vector2,Tekla.Common.Geometry.UnitVector2,Tekla.Common.Geometry.UnitVector2,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="unitX">The unit X.</param>
+            <param name="unitY">The unit Y.</param>
+            <param name="focal">The focal.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2.UnitX">
+            <summary>
+            Gets the unit X.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2.UnitY">
+            <summary>
+            Gets the unit Y.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve2.Focal">
+            <summary>
+            Gets the focal.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3">
+            <summary>
+            Parabola curve.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.UnitVector3,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="unitX">The unit X.</param>
+            <param name="unitY">The unit Y.</param>
+            <param name="focal">The focal.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.EvalAt(System.Double)">
+            <summary>
+            Evaluates a value of the curve.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>
+            The evaluated value.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.UnitX">
+            <summary>
+            Gets the unit X.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.UnitY">
+            <summary>
+            Gets the unit Y.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.Normal">
+            <summary>
+            Gets the normal of the curve plane.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.ParabolaCurve3.Focal">
+            <summary>
+            Gets the focal.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface">
+            <summary>
+            Plane surface.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.UnitVector3,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="unitX">The unit X.</param>
+            <param name="unitY">The unit Y.</param>
+            <param name="direct">if set to <c>true</c>, surface's local coordinate system is direct i.e. right-handed, else left-handed.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface.UnitX">
+            <summary>
+            Gets the unit X.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface.UnitY">
+            <summary>
+            Gets the unit Y.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface.Normal">
+            <summary>
+            Gets the normal.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface.Direct">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.PlaneSurface"/> is direct i.e. right-handed.
+            </summary>
+            <value>
+              <c>true</c> if right-handed; otherwise left-handed, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.Shell">
+            <summary>
+            Topological representation for shell geometry
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Shell.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.Face})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Shell"/> class.
+            </summary>
+            <param name="faces">The faces.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Shell.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Shell.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.Shell)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Shell.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Shell.Faces">
+            <summary>
+            Gets the faces.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.Solid">
+            <summary>
+            Topological representation for solid geometry
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Solid.#ctor(System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.Shell})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Solid"/> class.
+            </summary>
+            <param name="shells">The shells.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Solid.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Solid.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.Solid)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Solid.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Solid.Shells">
+            <summary>
+            Gets the shells.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface">
+            <summary>
+            Sphere surface.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.UnitVector3,System.Boolean,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="unitX">The unit X.</param>
+            <param name="unitY">The unit Y.</param>
+            <param name="direct">if set to <c>true</c>, surface's local coordinate system is direct i.e. right-handed, else left-handed.</param>
+            <param name="radius">The radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.UnitX">
+            <summary>
+            Gets the unit X.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.UnitY">
+            <summary>
+            Gets the unit Y.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.UnitZ">
+            <summary>
+            Gets the unit Z.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.Direct">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface"/> is direct i.e. right-handed.
+            </summary>
+            <value>
+              <c>true</c> if right-handed; otherwise left-handed, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.SphereSurface.Radius">
+            <summary>
+            Gets the radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface">
+            <summary>
+            Torus surface.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.UnitVector3,Tekla.Common.Geometry.UnitVector3,System.Boolean,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="unitX">The unit X.</param>
+            <param name="unitY">The unit Y.</param>
+            <param name="direct">if set to <c>true</c>, surface's local coordinate system is direct i.e. right-handed, else left-handed.</param>
+            <param name="majorRadius">The major radius.</param>
+            <param name="minorRadius">The minor radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.UnitX">
+            <summary>
+            Gets the unit X.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.UnitY">
+            <summary>
+            Gets the unit Y.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.UnitZ">
+            <summary>
+            Gets the unit Z.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.Direct">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface"/> is direct i.e. right-handed.
+            </summary>
+            <value>
+              <c>true</c> if right-handed; otherwise left-handed, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.MajorRadius">
+            <summary>
+            Gets the major radius.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.TorusSurface.MinorRadius">
+            <summary>
+            Gets the minor radius.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.OpenCascade.Wire3">
+            <summary>
+            Topological representation for wire geometry
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Wire3.#ctor(Tekla.Common.Geometry.Shapes.OpenCascade.Orientation,System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.OpenCascade.Edge3})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.OpenCascade.Wire3"/> class.
+            </summary>
+            <param name="orientation">The orientation.</param>
+            <param name="edges">The edges.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Wire3.Equals(System.Object)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Wire3.Equals(Tekla.Common.Geometry.Shapes.OpenCascade.Wire3)">
+            <summary>
+            Tests for the exact equality of two objects
+            </summary>
+            <param name="other">The other object</param>
+            <returns>TRUE if the objects are equal, FALSE if not</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.OpenCascade.Wire3.GetHashCode">
+            <summary>
+            Returns the hash code for object
+            </summary>
+            <returns>the hash code</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Wire3.Orientation">
+            <summary>
+            Gets the orientation.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.OpenCascade.Wire3.Edges">
+            <summary>
+            Gets the edges.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.SweptDiskSolid">
+            <summary>
+            Class presenting the shape of swept disk solid.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.SweptDiskSolid.#ctor(Tekla.Common.Geometry.Topology.Wire3,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.SweptDiskSolid"/> class.
+            </summary>
+            <param name="wire">The wire.</param>
+            <param name="radius">The radius.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.SweptDiskSolid.Wire">
+            <summary>
+            Gets the wire presenting the center line.
+            </summary>
+            <value>
+            The wire.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.SweptDiskSolid.Radius">
+            <summary>
+            Gets the radius for the swept disk solid.
+            </summary>
+            <value>
+            The radius.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh">
+            <summary>
+            A Triangle mesh based on (native) ZKit definition.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.#ctor(Tekla.Common.Geometry.Vector3,System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normal},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLine},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLine},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Line},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Corner},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Triangle},System.Collections.Generic.IEnumerable{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.ReferenceLine},System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh"/> class.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="normals">The normal vectors.</param>
+            <param name="vertices">The vertices.</param>
+            <param name="edgeLines">The edge lines.</param>
+            <param name="surfaceLines">The surface lines.</param>
+            <param name="lines">The lines.</param>
+            <param name="corners">The corners.</param>
+            <param name="triangles">The triangles.</param>
+            <param name="referenceLines">The reference lines.</param>
+            <param name="referenceLineRadius">The reference line radius.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Transform(Tekla.Common.Geometry.AffineTransform3)">
+            <summary>
+            Transforms the specified placement.
+            </summary>
+            <param name="placement">The placement.</param>
+            <returns>the transformed triangle mesh.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.CheckForTwoManifold">
+            <summary>
+            Checks for 2-manifold. 
+            </summary>
+            <returns>true, if the faceted B-Rep is 2-manifold.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.CreateSurfaceLines">
+            <summary>
+            Creates the surface lines for the new mesh.
+            </summary>
+            <returns>new TriangleMesh wish created surface and edge lines.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.AddHalfEdge(System.UInt16,System.UInt16,System.UInt16,System.Collections.Generic.IList{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normal},System.Collections.Generic.Dictionary{System.UInt32,System.UInt16},System.Collections.Generic.List{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLine},System.Collections.Generic.List{Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLine})">
+            <summary>
+            Adds the half edge.
+            </summary>
+            <param name="v0">The v0.</param>
+            <param name="v1">The v1.</param>
+            <param name="normalId">The normal id.</param>
+            <param name="normals">The normals.</param>
+            <param name="halfEdges">The half edges.</param>
+            <param name="edgeLines">The edge lines.</param>
+            <param name="surfaceLines">The surface lines.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.MakeKey(System.UInt16,System.UInt16)">
+            <summary>
+            Makes the key.
+            </summary>
+            <param name="v0">The v0.</param>
+            <param name="v1">The v1.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Rotate(Tekla.Common.Geometry.AffineTransform3,Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normal)">
+            <summary>
+            Transforms the specified rotation.
+            </summary>
+            <param name="rotation">The rotation.</param>
+            <param name="normal">The normal.</param>
+            <returns>the rotateted normal</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Transform(Tekla.Common.Geometry.AffineTransform3,Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex)">
+            <summary>
+            Transforms the specified placement.
+            </summary>
+            <param name="placement">The placement.</param>
+            <param name="vertex">The vertex.</param>
+            <returns>the transformed vertex</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Transform(Tekla.Common.Geometry.AffineTransform3,Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.ReferenceLine)">
+            <summary>
+            Transforms the specified placement.
+            </summary>
+            <param name="placement">The placement.</param>
+            <param name="referenceLine">The reference line.</param>
+            <returns>the transformed reference line</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Origin">
+            <summary>
+            Gets the origin.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normals">
+            <summary>
+            Gets the normals.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertices">
+            <summary>
+            Gets the vertices.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLines">
+            <summary>
+            Gets the edge lines.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLines">
+            <summary>
+            Gets the surface lines.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Lines">
+            <summary>
+            Gets the lines.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Corners">
+            <summary>
+            Gets the corners.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Triangles">
+            <summary>
+            Gets the triangles.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.ReferenceLines">
+            <summary>
+            Gets the reference lines.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.ReferenceLineRadius">
+            <summary>
+            Gets the reference line radius.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.BoundingBox">
+            <summary>
+            Gets the bounding box.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Center">
+            <summary>
+            Gets the center of the bounding box for this triangle mesh.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Extent">
+            <summary>
+            Gets the extent for the bounding box of this triangle mesh.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex">
+            <summary>
+             Vector struct in 32-bit floating point precision to be used with ZKit.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex"/> struct.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <param name="z">The z.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex.X">
+            <summary>
+            Gets the X.
+            </summary>
+            <value>
+            The X coordinate.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex.Y">
+            <summary>
+            Gets the Y.
+            </summary>
+            <value>
+            The Y coordinate.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex.Z">
+            <summary>
+            Gets the Z.
+            </summary>
+            <value>
+            The Z coordinate.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normal">
+            <summary>
+             Normal struct in 32-bit floating point precision to be used with ZKit.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normal.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normal"/> struct.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <param name="z">The z.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normal.X">
+            <summary>
+            Gets the X.
+            </summary>
+            <value>
+            The X coordinate.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normal.Y">
+            <summary>
+            Gets the Y.
+            </summary>
+            <value>
+            The Y coordinate.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Normal.Z">
+            <summary>
+            Gets the Z.
+            </summary>
+            <value>
+            The Z coordinate.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLine">
+            <summary>
+            The edge line struct to be used with ZKit triangle mesh.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLine.#ctor(System.UInt16,System.UInt16,System.UInt16,System.UInt16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLine"/> struct.
+            </summary>
+            <param name="v0">The first vertex.</param>
+            <param name="v1">The second vertex.</param>
+            <param name="n0">The first normal.</param>
+            <param name="n1">The second normal.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLine.N0">
+            <summary>
+            Gets the n0 (first normal).
+            </summary>
+            <value>
+            The n0 (first normal).
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLine.V0">
+            <summary>
+            Gets the v0 (first vertex).
+            </summary>
+            <value>
+            The v0 (first vertex).
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLine.N1">
+            <summary>
+            Gets the n1 (second normal).
+            </summary>
+            <value>
+            The n1 (second normal).
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.EdgeLine.V1">
+            <summary>
+            Gets the v1 (second vertex).
+            </summary>
+            <value>
+            The v1 (second vertex).
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLine">
+            <summary>
+            The edge line struct to be used with ZKit triangle mesh.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLine.#ctor(System.UInt16,System.UInt16,System.UInt16,System.UInt16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLine"/> struct.
+            </summary>
+            <param name="n0">The first normal.</param>
+            <param name="v0">The first vertex.</param>
+            <param name="n1">The second normal.</param>
+            <param name="v1">The second vertex.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLine.N0">
+            <summary>
+            Gets the n0 (first normal).
+            </summary>
+            <value>
+            The n0 (first normal).
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLine.V0">
+            <summary>
+            Gets the v0 (first vertex).
+            </summary>
+            <value>
+            The v0 (first vertex).
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLine.N1">
+            <summary>
+            Gets the n1 (second normal).
+            </summary>
+            <value>
+            The n1 (second normal).
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.SurfaceLine.V1">
+            <summary>
+            Gets the v1 (second vertex).
+            </summary>
+            <value>
+            The v1 (second vertex).
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Line">
+            <summary>
+            The edge line struct to be used with ZKit triangle mesh.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Line.#ctor(System.UInt16,System.UInt16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Line"/> struct.
+            </summary>
+            <param name="v0">The first vertex.</param>
+            <param name="v1">The second vertex.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Line.V0">
+            <summary>
+            Gets the v0 (first vertex).
+            </summary>
+            <value>
+            The v0 (first vertex).
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Line.V1">
+            <summary>
+            Gets the v1 (second vertex).
+            </summary>
+            <value>
+            The v1 (second vertex).
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Corner">
+            <summary>
+            The corner struct to be used with ZKit triangle mesh.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Corner.#ctor(System.UInt16,System.UInt16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Corner"/> struct.
+            </summary>
+            <param name="normalIndex">The normal index of the corner.</param>
+            <param name="vertexIndex">The vertex index of the corber.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Corner.NormalIndex">
+            <summary>
+            Gets the normal index.
+            </summary>
+            <value>
+            The normal index.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Corner.VertexIndex">
+            <summary>
+            Gets the vertex index.
+            </summary>
+            <value>
+            The vertex index.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Triangle">
+            <summary>
+            The triangle struct to be used with ZKit triangle mesh.
+            TODO; change v0,v1,v2 -> c0,c1,c2, these are corners.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Triangle.#ctor(System.UInt16,System.UInt16,System.UInt16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Triangle"/> struct.
+            </summary>
+            <param name="v0">The first corner.</param>
+            <param name="v1">The second corner.</param>
+            <param name="v2">The third corner.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Triangle.V0">
+            <summary>
+            Gets the v0 (first vertex).
+            </summary>
+            <value>
+            The v0 (first vertex).
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Triangle.V1">
+            <summary>
+            Gets the v1 (second vertex).
+            </summary>
+            <value>
+            The v1 (second vertex).
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Triangle.V2">
+            <summary>
+            Gets the v2 (second vertex).
+            </summary>
+            <value>
+            The v2 (second vertex).
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.ReferenceLine">
+            <summary>
+            The reference line (lod line) struct to be used with ZKit triangle mesh.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.ReferenceLine.#ctor(Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex,Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.Vertex)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.ReferenceLine"/> struct.
+            </summary>
+            <param name="v0">The first vertex of the line.</param>
+            <param name="v1">The second vertex of the line.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.ReferenceLine.V0">
+            <summary>
+            Gets or the first vertex.
+            </summary>
+            <value>
+            The first vertex.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Shapes.Zkit.TriangleMesh.ReferenceLine.V1">
+            <summary>
+            Gets the second vertex.
+            </summary>
+            <value>
+            The second vertex.
+            </value>
+        </member>
+    </members>
+</doc>

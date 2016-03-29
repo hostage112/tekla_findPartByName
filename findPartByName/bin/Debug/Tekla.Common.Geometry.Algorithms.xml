@@ -1,0 +1,648 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tekla.Common.Geometry.Algorithms</name>
+    </assembly>
+    <members>
+        <member name="T:Tekla.Common.Geometry.Algorithms.IQuantizedAabbVisitor">
+            <summary>
+            Defines the interface for visiting quantized axis aligned bounding box tree.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.IQuantizedAabbVisitor.VisitBranchNode(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Tree has a branch node.
+            </summary>
+            <param name="level">The level where the node is (depth from root).</param>
+            <param name="branchNodeId">The node identifier.</param>
+            <param name="branchNodeCount">The count of branch nodes.</param>
+            <param name="dataNodeCount">The count of data nodes.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.IQuantizedAabbVisitor.VisitDataNode(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            The tree has a data node with value.
+            </summary>
+            <param name="level">The level where the node is (depth from root).</param>
+            <param name="dataNodeId">The data node identifier.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.IQuantizedAabbVisitor.VisitLeftNode(System.Int32,System.Int32)">
+            <summary>
+            Tree has a left child node for the branch node identifier.
+            </summary>
+            <param name="branchNodeId">The branch node identifier.</param>
+            <param name="leftNodeId">The left node identifier.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.IQuantizedAabbVisitor.VisitRightNode(System.Int32,System.Int32)">
+            <summary>
+            Tree has a right child node for the branch node identifier.
+            </summary>
+            <param name="branchNodeId">The branch node identifier.</param>
+            <param name="rightNodeId">The right node identifier.</param>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Algorithms.KdTree3">
+            <summary>
+            KD-Tree for Vector3 items.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.KdTree3.vertices">
+            <summary>
+            The list of vertices used in the KD-Tree.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.KdTree3.#ctor(System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Algorithms.KdTree3"/> class.
+            </summary>
+            <param name="epsilon">The epsilon use in compares.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.KdTree3.Insert(Tekla.Common.Geometry.Vector3)">
+            <summary>
+            Inserts the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The index representing the value.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.KdTree3.RecurseX(System.Collections.Generic.IList{Tekla.Common.Geometry.Vector3},Tekla.Common.Geometry.Algorithms.KdTreeNode3,Tekla.Common.Geometry.Vector3@,System.Double)">
+            <summary>
+            Makes an recursive insert to the tree.
+            </summary>
+            <param name="vertices">The vertices.</param>
+            <param name="treeNode">The tree node.</param>
+            <param name="value">The value.</param>
+            <param name="epsilon">The epsilon.</param>
+            <returns>
+            Existing node from the tree or a new node.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.KdTree3.RecurseY(System.Collections.Generic.IList{Tekla.Common.Geometry.Vector3},Tekla.Common.Geometry.Algorithms.KdTreeNode3,Tekla.Common.Geometry.Vector3@,System.Double)">
+            <summary>
+            Makes an recursive insert to the tree.
+            </summary>
+            <param name="vertices">The vertices.</param>
+            <param name="treeNode">The tree node.</param>
+            <param name="value">The value.</param>
+            <param name="epsilon">The epsilon.</param>
+            <returns>
+            Existing node from the tree or a new node.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.KdTree3.RecurseZ(System.Collections.Generic.IList{Tekla.Common.Geometry.Vector3},Tekla.Common.Geometry.Algorithms.KdTreeNode3,Tekla.Common.Geometry.Vector3@,System.Double)">
+            <summary>
+            Makes an recursive insert to the tree.
+            </summary>
+            <param name="vertices">The vertices.</param>
+            <param name="treeNode">The tree node.</param>
+            <param name="value">The value.</param>
+            <param name="epsilon">The epsilon.</param>
+            <returns>
+            Existing node from the tree or a new node.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.KdTree3.Compare(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.Vector3@,System.Double)">
+            <summary>
+            Compares the specified tree value.
+            </summary>
+            <param name="treeValue">The tree value.</param>
+            <param name="newValue">The new value.</param>
+            <param name="epsilon">The epsilon.</param>
+            <returns>If the values are equal enough.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.KdTree3.Epsilon">
+            <summary>
+            Gets the epsilon.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.KdTree3.Vertices">
+            <summary>
+            Gets the vertices as array. NOTE: includes conversion from list to array.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.KdTree3.Root">
+            <summary>
+            Gets the root.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Algorithms.KdTreeNode3">
+            <summary>
+            KD-tree node for Vector3 class.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.KdTreeNode3.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Algorithms.KdTreeNode3"/> class.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.KdTreeNode3.Front">
+            <summary>
+            Gets or sets the front.
+            </summary>
+            <value>
+            The front.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.KdTreeNode3.Back">
+            <summary>
+            Gets or sets the back.
+            </summary>
+            <value>
+            The back.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.KdTreeNode3.Index">
+            <summary>
+            Gets Value.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3">
+            <summary>
+            The quantized vector3 struct.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3.#ctor(System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.UInt16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3"/> struct.
+            </summary>
+            <param name="minX">The min X.</param>
+            <param name="maxX">The max X.</param>
+            <param name="minY">The min Y.</param>
+            <param name="maxY">The max Y.</param>
+            <param name="minZ">The min Z.</param>
+            <param name="maxZ">The max Z.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3.CreateMergedWith(Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3)">
+            <summary>
+            Creates the merged QuantizedAabb with the other QuantizedAabb.
+            </summary>
+            <param name="other">The other QuantizedAabb.</param>
+            <returns>The merged QuantizedAabb.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3.MinX">
+            <summary>
+            Gets the min X.
+            </summary>
+            <value>
+            The min X.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3.MaxX">
+            <summary>
+            Gets the max X.
+            </summary>
+            <value>
+            The max X.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3.MinY">
+            <summary>
+            Gets the min Y.
+            </summary>
+            <value>
+            The min Y.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3.MaxY">
+            <summary>
+            Gets the max Y.
+            </summary>
+            <value>
+            The max Y.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3.MinZ">
+            <summary>
+            Gets the min Z.
+            </summary>
+            <value>
+            The min Z.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3.MaxZ">
+            <summary>
+            Gets the max Z.
+            </summary>
+            <value>
+            The max Z.
+            </value>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Algorithms.Aabb">
+            <summary>
+            struct for 
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.Aabb.#ctor(Tekla.Common.Geometry.Vector3,Tekla.Common.Geometry.Vector3)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Algorithms.Aabb"/> struct.
+            </summary>
+            <param name="center">The center.</param>
+            <param name="extent">The extent.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.Aabb.op_Implicit(Tekla.Common.Geometry.AxisAlignedBox3)~Tekla.Common.Geometry.Algorithms.Aabb">
+            <summary>
+            Performs an implicit conversion from <see cref="T:Tekla.Common.Geometry.AxisAlignedBox3"/> to <see cref="!:CSGTest.Aabb"/>.
+            </summary>
+            <param name="box">The box.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.Aabb.CreateMergedWith(Tekla.Common.Geometry.Algorithms.Aabb)">
+            <summary>
+            Creates the merged axis aligned bounding box with other.
+            </summary>
+            <param name="other">The other axis aligned bounding box.</param>
+            <returns>The merged axis aligned bounding box with this and the other one.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.Aabb.CollideRay(Tekla.Common.Geometry.Ray3)">
+            <summary>
+            Tests if the given ray collides this bounding box.
+            The algorithm is the same than in geometric tools for OBB, but
+            this is simplified (f. ex. box-&gt;mAxis[0] is always the Vector.UnitX)
+            could be speed up having f. ex. absDirection pre-calculated;
+            using SSE to calculate values as two sets...
+            </summary>
+            <param name="ray">The ray.</param>
+            <returns>
+            True, if the ray collides this bounding box.
+            </returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.Aabb.Center">
+            <summary>
+            Gets the center.
+            </summary>
+            <value>
+            The center.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.Aabb.Extent">
+            <summary>
+            Gets the extent.
+            </summary>
+            <value>
+            The extent.
+            </value>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.Aabb.Min">
+            <summary>
+            Gets the min.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.Aabb.Max">
+            <summary>
+            Gets the max.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Algorithms.InputBox">
+            <summary>
+            The struct representing the input item.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.InputBox.Aabb">
+            <summary>
+            The bounding box for the input
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.InputBox.Data">
+            <summary>
+            The data value for the input.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Algorithms.VisitorStackItem">
+            <summary>
+            Definition of items in the visitor walker.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.VisitorStackItem.BranchNodeIndex">
+            <summary>
+            The parent id.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.VisitorStackItem.Depth">
+            <summary>
+            The depth of the node (level)
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.VisitorStackItem.BranchNodeEndIndex">
+            <summary>
+            The branch node end index.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.VisitorStackItem.DataNodeCount">
+            <summary>
+            The count of subnodes containing data.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.VisitorStackItem.BranchNodeCount">
+            <summary>
+            The count of subnodes containing branch.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree">
+            <summary>
+            Quantized axis aligned bounding box tree
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.quantizedAabbTreeNodes">
+            <summary>
+            The quantized nodes presenting the tree.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.globalAabb">
+            <summary>
+            global bounding box.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.bvhQuantization">
+            <summary>
+            The quantization vector used in the tree.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.#ctor(System.Collections.Generic.IList{Tekla.Common.Geometry.Algorithms.InputBox})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree"/> class.
+            </summary>
+            <param name="inputBoxes">The primitive boxes.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.BoxQuery(Tekla.Common.Geometry.AxisAlignedBox3)">
+            <summary>
+            Query items inside the given box.
+            </summary>
+            <param name="box">The box.</param>
+            <returns>Results the list of entities that are possible inside the given box.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.RayQuery(Tekla.Common.Geometry.Ray3)">
+            <summary>
+            Queries which data nodes collide with the given ray.
+            </summary>
+            <param name="ray">The ray.</param>
+            <returns>
+            the list of data nodes that collide the given ray.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.ClippingPlanesQuery(System.Collections.Generic.ICollection{Tekla.Common.Geometry.Plane3})">
+            <summary>
+            Queries which data nodes collide with the given clipping planes.
+            </summary>
+            <param name="clippingPlanes">The clipping planes.</param>
+            <returns>List of data identifiers for the nodes.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.CalculateAverageNodeDepth">
+            <summary>
+            Calculates the average node depth.
+            </summary>
+            <returns>The average node depth.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.Visit(Tekla.Common.Geometry.Algorithms.IQuantizedAabbVisitor)">
+            <summary>
+            Visits the given visitor.
+            </summary>
+            <param name="visitor">The visitor.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.InPlaceSplitX(System.Collections.Generic.IList{Tekla.Common.Geometry.Algorithms.InputBox},System.Int32,System.Int32,System.Double)">
+            <summary>
+            QSort like in-place split by pivot using X component.
+            </summary>
+            <param name="inputBoxes">The primitive boxes.</param>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <param name="pivotValue">The pivot value.</param>
+            <returns>The split index, for which the split is effective.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.InPlaceSplitY(System.Collections.Generic.IList{Tekla.Common.Geometry.Algorithms.InputBox},System.Int32,System.Int32,System.Double)">
+            <summary>
+            QSort like in-place split by pivot using Y component.
+            </summary>
+            <param name="inputBoxes">The primitive boxes.</param>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <param name="pivotValue">The pivot value.</param>
+            <returns>The split index, for which the split is effective.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.InPlaceSplitZ(System.Collections.Generic.IList{Tekla.Common.Geometry.Algorithms.InputBox},System.Int32,System.Int32,System.Double)">
+            <summary>
+            QSort like in-place split by pivot using Z component.
+            </summary>
+            <param name="inputBoxes">The primitive boxes.</param>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <param name="pivotValue">The pivot value.</param>
+            <returns>The split index, for which the split is effective.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.CalculateMeanOfCenterPoints(System.Collections.Generic.IList{Tekla.Common.Geometry.Algorithms.InputBox},System.Int32,System.Int32)">
+            <summary>
+            Calculates the mean the of center points in the given range.
+            </summary>
+            <param name="inputBoxes">The primitive boxes.</param>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>Returns the mean of the center boxes in the given range.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.MergeBoxes(System.Collections.Generic.IList{Tekla.Common.Geometry.Algorithms.InputBox},System.Int32,System.Int32)">
+            <summary>
+            Merges the boxes in the given range.
+            </summary>
+            <param name="inputBoxes">The primitive boxes.</param>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>Returns the Aabb that is merged with the boxes in the given range.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.SwapInputBoxes(System.Collections.Generic.IList{Tekla.Common.Geometry.Algorithms.InputBox},System.Int32,System.Int32)">
+            <summary>
+            Swaps the boxes.
+            </summary>
+            <param name="inputBoxes">The primitive boxes.</param>
+            <param name="itemA">The itemA.</param>
+            <param name="itemB">Index of the store.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.RoundedQuantize(System.Double,System.Double)">
+            <summary>
+            Quantizes and rounds the value. .
+            </summary>
+            <param name="value">The value.</param>
+            <param name="quantization">The quantization.</param>
+            <returns>The quanized and rounded value.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.TestQuantizedBoxOverlap(System.Int32,Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3)">
+            <summary>
+            Tests if the quantized box overlap.
+            </summary>
+            <param name="nodeIndex">Index of the node.</param>
+            <param name="quantizedAabb">The quantized axis aligned bounding box to compare to.</param>
+            <returns>
+            Returns true, if the quantized boxes do overlap.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.IsDataNode(System.Int32)">
+            <summary>
+            Determines whether the specified nodeIndex is data (leaf) node.
+            </summary>
+            <param name="nodeIndex">The nodeIndex.</param>
+            <returns>
+              <c>true</c> if the specified nodeIndex is data node; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.GetQuantizedAabb(System.Int32)">
+            <summary>
+            Gets the quantized axis aligned bounding box.
+            </summary>
+            <param name="nodeIndex">Index of the node.</param>
+            <returns>
+            the quantized axis aligned bounding box
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.GetAabb(System.Int32)">
+            <summary>
+            Gets the axis aligned bounding box.
+            </summary>
+            <param name="nodeIndex">Index of the node.</param>
+            <returns>the axis aligned bounding box</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.CreateDataNode(System.Int32,Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3,System.Int32)">
+            <summary>
+            Creates the data (leaf) node.
+            </summary>
+            <param name="nodeIndex">Index of the node.</param>
+            <param name="quantizedAabb">The quantized axis aligned bounding box.</param>
+            <param name="dataValue">The dataValue.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.CreateBranchNode(System.Int32,Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3,System.Int32)">
+            <summary>
+            Creates the branch node.
+            </summary>
+            <param name="nodeIndex">Index of the node.</param>
+            <param name="quantizedAabb">The quantized axis aligned bounding box.</param>
+            <param name="width">The width (count of subnodes) of the branch.</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.GetNodeDataValue(System.Int32)">
+            <summary>
+            Gets the value from a data node.
+            </summary>
+            <param name="nodeIndex">Index of the node.</param>
+            <returns>The data value for the node.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.GetBranchNodeWidth(System.Int32)">
+            <summary>
+            Gets the width of the branch node (count of subnodes).
+            </summary>
+            <param name="nodeIndex">Index of the node.</param>
+            <returns>The width for the node (nodeCount of nodes in the subtree)</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.Quantize(Tekla.Common.Geometry.Algorithms.Aabb)">
+            <summary>
+            Quantizes the specified axis aligned bounding box.
+            </summary>
+            <param name="aabb">The axis aligned box.</param>
+            <returns>
+            The quantized axis aligned bounding box.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.Unquantize(Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3)">
+            <summary>
+            Inverse quantizes the specified value.
+            </summary>
+            <param name="value">The quantized value.</param>
+            <returns>Returns the unquantized value.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.BuildSubTree(System.Int32,System.Collections.Generic.IList{Tekla.Common.Geometry.Algorithms.InputBox},System.Int32,System.Int32,Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3@)">
+            <summary>
+            Builds the sub tree.
+            </summary>
+            <param name="outputIndex">The next (free) index.</param>
+            <param name="inputBoxes">The primitive boxes.</param>
+            <param name="left">The left index.</param>
+            <param name="right">The right index.</param>
+            <param name="subTreeBoundingBox">The calculated sub tree bounding box.</param>
+            <returns>
+            Returns the count of nodes in the subtree (both data (leaf) and branch nodes).
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.SplitByOneAxis(System.Collections.Generic.IList{Tekla.Common.Geometry.Algorithms.InputBox},System.Int32,System.Int32)">
+            <summary>
+            Splits the input primitives by one axis.
+            Variance is used to detect which axis to split by,
+            The mean (average) center point by that axis is used as pivot to split.
+            Always: right > left.
+            </summary>
+            <param name="inputBoxes">The primitive boxes.</param>
+            <param name="left">The left index.</param>
+            <param name="right">The right index.</param>
+            <returns>Returns the index where the split was done.</returns>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.Quantization">
+            <summary>
+            Gets the quantization used for the tree.
+            </summary>
+        </member>
+        <member name="P:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3Tree.DataNodeCount">
+            <summary>
+            Gets the total count of data (leaf) nodes.
+            </summary>
+        </member>
+        <member name="T:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode">
+            <summary>
+            The quantized axis aligned bounding box node with data id.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode.quantizedAabb">
+            <summary>
+            The quantized axis aligned bounding box.
+            </summary>
+        </member>
+        <member name="F:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode.widthOrValue">
+            <summary>
+            If negative, containing the escape width.
+            If positive, the data provided.
+            </summary>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode.IsDataNode">
+            <summary>
+            Determines whether this is data node.
+            </summary>
+            <returns>
+              <c>true</c> if this node contains data; otherwise, <c>false</c> and contains a branch.
+            </returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode.GetQuantizedAabb">
+            <summary>
+            Gets the quantized axis aligned bounding box.
+            </summary>
+            <returns>the quantized axis aligned bounding box</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode.GetBranchNodeWidth">
+            <summary>
+            Gets the width of the branch. (The count of nodes inside this branches subtree).
+            </summary>
+            <returns>The count of nodes inside this branch.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode.GetDataNodeValue">
+            <summary>
+            Gets the data value.
+            </summary>
+            <returns>Returns the id for the node.</returns>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode.SetAsBranch(System.Int32,Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3)">
+            <summary>
+            Sets the node to be a branch node.
+            </summary>
+            <param name="width">The width of the branch.</param>
+            <param name="aabb">The quantized axis aligned bounding box for the brach</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode.SetAsDataValue(System.Int32,Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3)">
+            <summary>
+            Sets the data value.
+            </summary>
+            <param name="dataValue">The data value.</param>
+            <param name="aabb">The quantized axis aligned bounding box for the brach</param>
+        </member>
+        <member name="M:Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3TreeNode.TestQuantizedBoxOverlap(Tekla.Common.Geometry.Algorithms.QuantizedAxisAlignedBox3)">
+            <summary>
+            Tests the quantized box overlap.
+            </summary>
+            <param name="aabb">The quantized axis aligned bounding box to compare with.</param>
+            <returns>
+            Returns true, is boxes overlap.
+            </returns>
+        </member>
+    </members>
+</doc>
