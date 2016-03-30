@@ -48,7 +48,7 @@
             this.txt_search_value.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_search_value.Enabled = false;
-            this.txt_search_value.Location = new System.Drawing.Point(5, 172);
+            this.txt_search_value.Location = new System.Drawing.Point(5, 176);
             this.txt_search_value.Name = "txt_search_value";
             this.txt_search_value.Size = new System.Drawing.Size(145, 20);
             this.txt_search_value.TabIndex = 0;
@@ -60,7 +60,7 @@
             this.btn_select.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_select.Enabled = false;
-            this.btn_select.Location = new System.Drawing.Point(5, 195);
+            this.btn_select.Location = new System.Drawing.Point(5, 199);
             this.btn_select.Name = "btn_select";
             this.btn_select.Size = new System.Drawing.Size(145, 23);
             this.btn_select.TabIndex = 1;
@@ -115,7 +115,7 @@
             this.rb_name.AutoSize = true;
             this.rb_name.Checked = true;
             this.rb_name.Enabled = false;
-            this.rb_name.Location = new System.Drawing.Point(5, 149);
+            this.rb_name.Location = new System.Drawing.Point(5, 153);
             this.rb_name.Name = "rb_name";
             this.rb_name.Size = new System.Drawing.Size(53, 17);
             this.rb_name.TabIndex = 9;
@@ -128,7 +128,7 @@
             // 
             this.rb_position.AutoSize = true;
             this.rb_position.Enabled = false;
-            this.rb_position.Location = new System.Drawing.Point(65, 149);
+            this.rb_position.Location = new System.Drawing.Point(65, 153);
             this.rb_position.Name = "rb_position";
             this.rb_position.Size = new System.Drawing.Size(62, 17);
             this.rb_position.TabIndex = 9;
@@ -138,7 +138,7 @@
             // lbl_results
             // 
             this.lbl_results.AutoSize = true;
-            this.lbl_results.Location = new System.Drawing.Point(5, 223);
+            this.lbl_results.Location = new System.Drawing.Point(5, 227);
             this.lbl_results.Name = "lbl_results";
             this.lbl_results.Size = new System.Drawing.Size(84, 13);
             this.lbl_results.TabIndex = 10;
@@ -152,7 +152,7 @@
             this.panel1.Controls.Add(this.rb_assembly);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.rb_parts);
-            this.panel1.Location = new System.Drawing.Point(-16, 100);
+            this.panel1.Location = new System.Drawing.Point(-16, 104);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(218, 44);
             this.panel1.TabIndex = 11;
@@ -188,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(154, 241);
+            this.ClientSize = new System.Drawing.Size(154, 246);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbl_results);
             this.Controls.Add(this.rb_position);
