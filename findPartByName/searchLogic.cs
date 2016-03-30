@@ -54,7 +54,6 @@ namespace findPartByName
             {
                 if (value == currentPart._position)
                 {
-                    MessageBox.Show(currentPart._position);
                     select.Add(currentPart._id);
                 }
             }
