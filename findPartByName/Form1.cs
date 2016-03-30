@@ -29,32 +29,52 @@ namespace findPartByName
         {
             update_model_label();
             txt_search_value.Text = searchValue;
-            lbl_results.Text = "Nothing selected";
-        }
-        private void update_model_label()
-        {
-            lbl_model_status.Text = allParts.assemblys.Count + " assemblys in memory.\n" + allParts.parts.Count.ToString() + " parts in memory.";
+            lbl_results.Text = "";
+            btn_get_model.Text = "Load model";
         }
 
         private void btn_get_model_Click(object sender, EventArgs e)
         {
+            btn_get_model.Enabled = false;
+            lbl_model_status.Text = "Loading...";
+
             allParts = teklaHandler.getModel();
+
             setSearchCollection();
             update_model_label();
             update_button_status();
+
+            btn_get_model.Enabled = true;
+        }
+
+        private void update_model_label()
+        {
+            lbl_model_status.Text = DateTime.Now.ToString("h:mm:ss") + "\n" +
+                allParts.assemblys.Count + " assemblys in memory\n" +
+                allParts.parts.Count.ToString() + " parts in memory";
         }
 
         private void update_button_status()
         {
             if (allParts.parts.Count > 0 || allParts.assemblys.Count > 0)
             {
+                btn_get_model.Text = "Reload model";
+
                 txt_search_value.Enabled = true;
                 btn_select.Enabled = true;
+                rb_assembly.Enabled = true;
+                rb_parts.Enabled = true;
+                rb_position.Enabled = true;
+                rb_name.Enabled = true;
             }
             else
             {
                 txt_search_value.Enabled = false;
                 btn_select.Enabled = false;
+                rb_assembly.Enabled = false;
+                rb_parts.Enabled = false;
+                rb_position.Enabled = false;
+                rb_name.Enabled = false;
             }
         }
 
@@ -67,7 +87,7 @@ namespace findPartByName
         {
             ArrayList select = searchLogic.findElements(searchedParts, searchValue, searchType);
             teklaHandler.selectFoundObject(select);
-            lbl_results.Text = select.Count.ToString() + " items selected.";
+            lbl_results.Text = select.Count.ToString() + " item(s) found";
         }
 
         private void rb_name_CheckedChanged(object sender, EventArgs e)
@@ -96,6 +116,17 @@ namespace findPartByName
         private void rb_parts_CheckedChanged(object sender, EventArgs e)
         {
             setSearchCollection();
+        }
+
+
+        private void txt_search_value_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_select.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
         }
     }
 }

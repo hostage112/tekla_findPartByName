@@ -52,7 +52,7 @@ namespace findPartByName
 
             foreach (elementData currentPart in allParts)
             {
-                if (value == currentPart._position)
+                if (value == currentPart._position || (value + @"(?)") == currentPart._position)
                 {
                     select.Add(currentPart._id);
                 }

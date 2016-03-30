@@ -48,22 +48,23 @@
             this.txt_search_value.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_search_value.Enabled = false;
-            this.txt_search_value.Location = new System.Drawing.Point(5, 113);
+            this.txt_search_value.Location = new System.Drawing.Point(5, 172);
             this.txt_search_value.Name = "txt_search_value";
-            this.txt_search_value.Size = new System.Drawing.Size(156, 20);
+            this.txt_search_value.Size = new System.Drawing.Size(145, 20);
             this.txt_search_value.TabIndex = 0;
             this.txt_search_value.TextChanged += new System.EventHandler(this.txt_search_value_TextChanged);
+            this.txt_search_value.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_search_value_KeyDown);
             // 
             // btn_select
             // 
             this.btn_select.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_select.Enabled = false;
-            this.btn_select.Location = new System.Drawing.Point(5, 141);
+            this.btn_select.Location = new System.Drawing.Point(5, 195);
             this.btn_select.Name = "btn_select";
-            this.btn_select.Size = new System.Drawing.Size(290, 23);
+            this.btn_select.Size = new System.Drawing.Size(145, 23);
             this.btn_select.TabIndex = 1;
-            this.btn_select.Text = "Select in model";
+            this.btn_select.Text = "Search in model";
             this.btn_select.UseVisualStyleBackColor = true;
             this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
             // 
@@ -73,9 +74,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_get_model.Location = new System.Drawing.Point(5, 25);
             this.btn_get_model.Name = "btn_get_model";
-            this.btn_get_model.Size = new System.Drawing.Size(290, 25);
+            this.btn_get_model.Size = new System.Drawing.Size(145, 25);
             this.btn_get_model.TabIndex = 2;
-            this.btn_get_model.Text = "Model";
+            this.btn_get_model.Text = "<load model>";
             this.btn_get_model.UseVisualStyleBackColor = true;
             this.btn_get_model.Click += new System.EventHandler(this.btn_get_model_Click);
             // 
@@ -101,10 +102,9 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 8);
+            this.label2.Location = new System.Drawing.Point(18, 2);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 5;
@@ -114,7 +114,8 @@
             // 
             this.rb_name.AutoSize = true;
             this.rb_name.Checked = true;
-            this.rb_name.Location = new System.Drawing.Point(167, 113);
+            this.rb_name.Enabled = false;
+            this.rb_name.Location = new System.Drawing.Point(5, 149);
             this.rb_name.Name = "rb_name";
             this.rb_name.Size = new System.Drawing.Size(53, 17);
             this.rb_name.TabIndex = 9;
@@ -126,7 +127,8 @@
             // rb_position
             // 
             this.rb_position.AutoSize = true;
-            this.rb_position.Location = new System.Drawing.Point(223, 114);
+            this.rb_position.Enabled = false;
+            this.rb_position.Location = new System.Drawing.Point(65, 149);
             this.rb_position.Name = "rb_position";
             this.rb_position.Size = new System.Drawing.Size(62, 17);
             this.rb_position.TabIndex = 9;
@@ -136,7 +138,7 @@
             // lbl_results
             // 
             this.lbl_results.AutoSize = true;
-            this.lbl_results.Location = new System.Drawing.Point(2, 172);
+            this.lbl_results.Location = new System.Drawing.Point(5, 223);
             this.lbl_results.Name = "lbl_results";
             this.lbl_results.Size = new System.Drawing.Size(84, 13);
             this.lbl_results.TabIndex = 10;
@@ -144,18 +146,23 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.rb_assembly);
-            this.panel1.Controls.Add(this.rb_parts);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(-4, 79);
+            this.panel1.Controls.Add(this.rb_parts);
+            this.panel1.Location = new System.Drawing.Point(-16, 100);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(311, 30);
+            this.panel1.Size = new System.Drawing.Size(218, 44);
             this.panel1.TabIndex = 11;
             // 
             // rb_assembly
             // 
+            this.rb_assembly.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.rb_assembly.AutoSize = true;
-            this.rb_assembly.Location = new System.Drawing.Point(227, 6);
+            this.rb_assembly.Enabled = false;
+            this.rb_assembly.Location = new System.Drawing.Point(80, 19);
             this.rb_assembly.Name = "rb_assembly";
             this.rb_assembly.Size = new System.Drawing.Size(69, 17);
             this.rb_assembly.TabIndex = 1;
@@ -164,9 +171,11 @@
             // 
             // rb_parts
             // 
+            this.rb_parts.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.rb_parts.AutoSize = true;
             this.rb_parts.Checked = true;
-            this.rb_parts.Location = new System.Drawing.Point(171, 6);
+            this.rb_parts.Enabled = false;
+            this.rb_parts.Location = new System.Drawing.Point(20, 19);
             this.rb_parts.Name = "rb_parts";
             this.rb_parts.Size = new System.Drawing.Size(49, 17);
             this.rb_parts.TabIndex = 0;
@@ -179,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 194);
+            this.ClientSize = new System.Drawing.Size(154, 241);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbl_results);
             this.Controls.Add(this.rb_position);
@@ -190,6 +199,8 @@
             this.Controls.Add(this.btn_select);
             this.Controls.Add(this.txt_search_value);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "findPartByName";
             this.TopMost = true;
