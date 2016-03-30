@@ -14,7 +14,9 @@ namespace findPartByName
 {
     public partial class Form1 : Form
     {
-        private List<elementData> allParts = new List<elementData>();
+        private partCollection allParts = new partCollection();
+        private List<elementData> searchedParts = new List<elementData>();
+
         private string searchValue = "EB-1-1004";
         private string searchType = "name";
 
@@ -29,10 +31,22 @@ namespace findPartByName
             txt_search_value.Text = searchValue;
             lbl_results.Text = "Nothing selected";
         }
+        private void update_model_label()
+        {
+            lbl_model_status.Text = allParts.assemblys.Count + " assemblys in memory.\n" + allParts.parts.Count.ToString() + " parts in memory.";
+        }
+
+        private void btn_get_model_Click(object sender, EventArgs e)
+        {
+            allParts = teklaHandler.getModel();
+            setSearchCollection();
+            update_model_label();
+            update_button_status();
+        }
 
         private void update_button_status()
         {
-            if (allParts.Count > 0)
+            if (allParts.parts.Count > 0 || allParts.assemblys.Count > 0)
             {
                 txt_search_value.Enabled = true;
                 btn_select.Enabled = true;
@@ -44,13 +58,6 @@ namespace findPartByName
             }
         }
 
-        private void btn_get_model_Click(object sender, EventArgs e)
-        {
-            allParts = teklaHandler.getModel();
-            update_model_label();
-            update_button_status();
-        }
-
         private void txt_search_value_TextChanged(object sender, EventArgs e)
         {
             searchValue = txt_search_value.Text;
@@ -58,7 +65,7 @@ namespace findPartByName
 
         private void btn_select_Click(object sender, EventArgs e)
         {
-            ArrayList select = searchLogic.findElements(allParts, searchValue, searchType);
+            ArrayList select = searchLogic.findElements(searchedParts, searchValue, searchType);
             teklaHandler.selectFoundObject(select);
             lbl_results.Text = select.Count.ToString() + " items selected.";
         }
@@ -75,9 +82,20 @@ namespace findPartByName
             }
         }
 
-        private void update_model_label()
+        private void setSearchCollection()
         {
-            lbl_model_status.Text = allParts.Count.ToString() + " parts in memory.";
+            if (rb_parts.Checked)
+            {
+                searchedParts = allParts.parts;
+            }
+            else
+            {
+                searchedParts = allParts.assemblys;
+            }
+        }
+        private void rb_parts_CheckedChanged(object sender, EventArgs e)
+        {
+            setSearchCollection();
         }
     }
 }

@@ -13,10 +13,10 @@ namespace findPartByName
 {
     static class teklaHandler
     {
-        public static List<elementData> getModel()
+        public static partCollection getModel()
         {
             Model myModel = new Model();
-            List<elementData> allParts = new List<elementData>();
+            partCollection allParts = new partCollection();
 
             if (myModel.GetConnectionStatus())
             {
@@ -28,25 +28,23 @@ namespace findPartByName
 
                 ModelObjectEnumerator myEnum = myModel.GetModelObjectSelector().GetAllObjectsWithType(selectionType);
 
-                allParts = getPartInfo(myEnum);
+                allParts = getPartInfo(allParts, myEnum);
             }
 
             return allParts;
         }
 
-        public static List<elementData> getPartInfo(ModelObjectEnumerator myEnum)
+        public static partCollection getPartInfo(partCollection allParts, ModelObjectEnumerator myEnum)
         {
-            List<elementData> allParts = new List<elementData>();
-
             while (myEnum.MoveNext())
             {
                 if (myEnum.Current is Part)
                 {
-                    allParts.Add(new elementData(myEnum.Current as Part));
+                    allParts.parts.Add(new elementData(myEnum.Current as Part));
                 }
                 else if (myEnum.Current is Assembly)
                 {
-                    allParts.Add(new elementData(myEnum.Current as Assembly));
+                    allParts.assemblys.Add(new elementData(myEnum.Current as Assembly));
                 }
             }
 

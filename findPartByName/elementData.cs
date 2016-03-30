@@ -10,6 +10,18 @@ using TSM = Tekla.Structures.Model;
 
 namespace findPartByName
 {
+    class partCollection
+    {
+        public List<elementData> parts;
+        public List<elementData> assemblys;
+
+        public partCollection()
+        {
+            parts = new List<elementData>();
+            assemblys = new List<elementData>();
+        }
+    }
+
     class elementData
     {
         public string _name;
@@ -30,4 +42,5 @@ namespace findPartByName
             _id = assembly.Identifier;
         }
     }
+
 }
