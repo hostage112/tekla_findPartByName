@@ -37,3 +37,12 @@ C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartB
 C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartByName.Form1.resources
 C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartByName.Properties.Resources.resources
 C:\Users\Alex\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartByName.csproj.GenerateResource.Cache
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\bin\Debug\findPartByName.exe.config
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\bin\Debug\findPartByName.exe
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\bin\Debug\findPartByName.pdb
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\obj\Debug\findPartByName.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\obj\Debug\findPartByName.Form1.resources
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\obj\Debug\findPartByName.Properties.Resources.resources
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\obj\Debug\findPartByName.csproj.GenerateResource.Cache
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\obj\Debug\findPartByName.exe
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\obj\Debug\findPartByName.pdb

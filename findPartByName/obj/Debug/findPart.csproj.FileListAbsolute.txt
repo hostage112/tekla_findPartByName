@@ -19,3 +19,6 @@ C:\Users\aleksandr.ess\Documents\GitHub\findPartByName\findPartByName\obj\Debug\
 C:\Users\aleksandr.ess\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPart.csproj.GenerateResource.Cache
 C:\Users\aleksandr.ess\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartByName.exe
 C:\Users\aleksandr.ess\Documents\GitHub\findPartByName\findPartByName\obj\Debug\findPartByName.pdb
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\bin\Debug\findPartByName.exe.config
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\obj\Debug\findPartByName.exe
+C:\Users\Alex\Documents\GitHub\tekla_findPartByName\findPartByName\obj\Debug\findPartByName.pdb
