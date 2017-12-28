@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Tekla.Structures;
+using TSF = Tekla.Structures.Filtering;
+using TFC = Tekla.Structures.Filtering.Categories;
 using Tekla.Structures.Model;
 using TSM = Tekla.Structures.Model;
 
