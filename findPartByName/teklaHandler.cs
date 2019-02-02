@@ -36,6 +36,7 @@ namespace findPartByName
             return allParts;
         }
 
+
         public static partCollection getPartInfo(partCollection allParts, ModelObjectEnumerator myEnum)
         {
             while (myEnum.MoveNext())
@@ -53,6 +54,7 @@ namespace findPartByName
             return allParts;
         }
 
+
         public static void selectFoundObject(ArrayList selectId)
         {
             ArrayList select = new ArrayList();
@@ -68,5 +70,29 @@ namespace findPartByName
             var ModelSelector = new TSM.UI.ModelObjectSelector();
             ModelSelector.Select(select);
         }
+
+
+        public static void selectInModel(string cur)
+        {
+            Model _myModel = new Model();
+
+            ArrayList selected = new ArrayList();
+
+            try
+            {
+                Guid GUID = new Guid(cur);
+                Identifier id = new Identifier(GUID);
+                object mo = _myModel.SelectModelObject(id);
+                selected.Add(mo);
+            }
+            catch
+            {
+
+            }
+
+            TSM.UI.ModelObjectSelector selector = new TSM.UI.ModelObjectSelector();
+            selector.Select(selected);
+        }
+
     }
 }

@@ -40,7 +40,6 @@ namespace findPartByName
 
             allParts = teklaHandler.getModel();
 
-            setSearchCollection();
             update_model_label();
             update_button_status();
 
@@ -84,38 +83,36 @@ namespace findPartByName
         }
 
         private void btn_select_Click(object sender, EventArgs e)
-        {
-            ArrayList select = searchLogic.findElements(searchedParts, searchValue, searchType);
-            teklaHandler.selectFoundObject(select);
-            lbl_results.Text = select.Count.ToString() + " item(s) found";
-        }
-
-        private void rb_name_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rb_name.Checked)
+        { 
+            if (rb_guid.Checked)
             {
-                searchType = "name";
+                teklaHandler.selectInModel(searchValue);
+                lbl_results.Text = "Selecting by GUID";
             }
             else
             {
-                searchType = "position";
-            }
-        }
+                if (rb_name.Checked)
+                {
+                    searchType = "name";
+                }
+                if (rb_position.Checked)
+                {
+                    searchType = "position";
+                }
 
-        private void setSearchCollection()
-        {
-            if (rb_parts.Checked)
-            {
-                searchedParts = allParts.parts;
+                if (rb_parts.Checked)
+                {
+                    searchedParts = allParts.parts;
+                }
+                if (rb_assembly.Checked)
+                {
+                    searchedParts = allParts.assemblys;
+                }
+
+                ArrayList select = searchLogic.findElements(searchedParts, searchValue, searchType);
+                teklaHandler.selectFoundObject(select);
+                lbl_results.Text = select.Count.ToString() + " item(s) found";
             }
-            else
-            {
-                searchedParts = allParts.assemblys;
-            }
-        }
-        private void rb_parts_CheckedChanged(object sender, EventArgs e)
-        {
-            setSearchCollection();
         }
 
 
@@ -128,5 +125,21 @@ namespace findPartByName
                 e.Handled = true;
             }
         }
+
+
+        private void rb_guid_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_guid.Checked)
+            {
+                rb_parts.Enabled = false;
+                rb_assembly.Enabled = false;
+            }
+            else
+            {
+                rb_parts.Enabled = true;
+                rb_assembly.Enabled = true;
+            }
+        }
+
     }
 }

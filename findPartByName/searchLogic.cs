@@ -11,6 +11,7 @@ namespace findPartByName
 {
     static class searchLogic
     {
+
         public static ArrayList findElements(List<elementData> allParts, string value, string searchType)
         {
             ArrayList select;
@@ -31,6 +32,7 @@ namespace findPartByName
             return select;
         }
 
+
         public static ArrayList searchByName(List<elementData> allParts, string value)
         {
             ArrayList select = new ArrayList();
@@ -45,6 +47,7 @@ namespace findPartByName
 
             return select;
         }
+
 
         public static ArrayList searchByPosition(List<elementData> allParts, string value)
         {
@@ -61,6 +64,21 @@ namespace findPartByName
             return select;
         }
 
+
+        public static ArrayList searchByGUID(List<elementData> allParts, string value)
+        {
+            ArrayList select = new ArrayList();
+
+            foreach (elementData currentPart in allParts)
+            {
+                if (value == currentPart._position || (value + @"(?)") == currentPart._position)
+                {
+                    select.Add(currentPart._id);
+                }
+            }
+
+            return select;
+        }
 
     }
 }
